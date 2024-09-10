@@ -1,18 +1,32 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class StaminaComponent : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("Runtime Value")]
+    public int staminaAmount;
+
+    //declaration of events
+    public event Action<int> OnStaminaModified;
+
+    public void IncreaseEnergy(int value)
     {
-        
+        ModifyStaminaAmount(value);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DecreaseEnergy(int value)
     {
-        
+        ModifyStaminaAmount(-1 * value);
     }
+
+    #region Internal Function
+    private void ModifyStaminaAmount(int value)
+    {
+        staminaAmount += value;
+
+        OnStaminaModified?.Invoke(staminaAmount);
+    }
+    #endregion
 }

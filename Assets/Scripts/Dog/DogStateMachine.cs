@@ -2,17 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DogStateMachine : MonoBehaviour
+public class DogStateMachine : BaseStateMachine
 {
-    // Start is called before the first frame update
-    void Start()
+    public DogIdleState IdleState;
+    public DogPatrolState PatrolState;
+
+    private Animator animator;
+
+    private void Awake()
     {
+        animator = GetComponentInChildren<Animator>();
         
+        IdleState = new(this, animator);
+        PatrolState = new(this, animator);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        InitializedStateMachine(IdleState);
+    }
+
+    protected override void Update()
+    {
+        base.Update();
     }
 }
