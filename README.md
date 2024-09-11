@@ -5,7 +5,7 @@ Create an NPC and 2 types of dogs.
 - patrols along waypoints 
 - flees when encountering a dog
 
-##Dog
+## Dog
 - patrols along waypoints 
 
 ### Setup of Project
