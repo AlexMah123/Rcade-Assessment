@@ -2,6 +2,7 @@
 - all assets are used for prototype purposes.
 
 # Details of Project
+Itch.io link: https://alexmah.itch.io/rcade-assessment (pass: RcadeStudio)
 Create an NPC and 2 types of dogs.
 
 ## NPC
