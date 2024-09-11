@@ -9,4 +9,5 @@ Create an NPC and 2 types of dogs.
 - patrols along waypoints 
 
 ## Setup of Project
-![Setup Project](https://github.com/user-attachments/assets/18b4466a-a328-465a-b239-30232bc2808c)
+![Setup Project](https://github.com/user-attachments/assets/70e14ea9-df5e-4938-87f1-33071f7cf91a)
+
