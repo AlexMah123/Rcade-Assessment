@@ -16,7 +16,7 @@ public abstract class BaseStateMachine: MonoBehaviour
     }
 
     //called at Start() of stateMachine
-    public void InitializedStateMachine(BaseState startingState)
+    public void InitializeStateMachine(BaseState startingState)
     {
         currentState = startingState;
         currentState.EnterState();

@@ -6,7 +6,9 @@ using UnityEngine;
 public class StaminaComponent : MonoBehaviour
 {
     [Header("Runtime Value")]
-    public int staminaAmount;
+    public int currentStamina;
+    public int maxStamina;
+
 
     //declaration of events
     public event Action<int> OnStaminaModified;
@@ -24,9 +26,9 @@ public class StaminaComponent : MonoBehaviour
     #region Internal Function
     private void ModifyStaminaAmount(int value)
     {
-        staminaAmount += value;
+        currentStamina += value;
 
-        OnStaminaModified?.Invoke(staminaAmount);
+        OnStaminaModified?.Invoke(currentStamina);
     }
     #endregion
 }

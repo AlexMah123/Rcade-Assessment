@@ -1,25 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DogIdleState : BaseState
 {
-    public DogIdleState(BaseStateMachine stateMachine, Animator animator) : base(stateMachine, animator)
+    [SerializeField] float waitTimeAtPath;
+
+    //injected values
+    private MovementData movementData;
+
+    public DogIdleState(BaseStateMachine stateMachine, Animator animator, DogMovementData dogMovementData)
+        : base(stateMachine, animator)
     {
+        movementData = dogMovementData.movementData;
+
+        waitTimeAtPath = dogMovementData.waitTimeAtPath;
     }
 
     protected override void OnEnterState()
     {
-        animator.SetInteger("State", 1);
+        //set animation
+        animator.SetInteger("State", 0);
+
+        stateMachine.StartCoroutine(WaitForPatrol());
     }
 
     protected override void OnExitState()
     {
-        
+        // allow movement
+        movementData.agent.isStopped = false;
     }
 
     protected override void OnUpdateState()
     {
         
+    }
+
+    private IEnumerator WaitForPatrol()
+    {
+        yield return new WaitForSeconds(waitTimeAtPath);
+
+        DogStateMachine dogStateMachine = stateMachine as DogStateMachine;
+        stateMachine.ChangeState(dogStateMachine.PatrolState);
     }
 }
