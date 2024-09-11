@@ -1,3 +1,6 @@
+### Disclaimer
+- all assets are used for prototype purposes.
+
 # Details of Project
 Create an NPC and 2 types of dogs.
 
