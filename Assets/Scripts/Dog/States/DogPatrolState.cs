@@ -24,6 +24,8 @@ public class DogPatrolState : BaseState
         //set animation
         animator.SetInteger("State", 1);
 
+        // allow movement
+        movementData.agent.isStopped = false;
         stateMachine.StartCoroutine(ProcessMovement());
     }
 
@@ -34,8 +36,22 @@ public class DogPatrolState : BaseState
 
     protected override void OnExitState()
     {
-        // Stop movement
-        movementData.agent.isStopped = true;
+
+    }
+
+    public override void OnTriggerEnter(Collider other)
+    {
+
+    }
+
+    public override void OnTriggerStay(Collider other)
+    {
+
+    }
+
+    public override void OnTriggerExit(Collider other)
+    {
+
     }
 
     private IEnumerator ProcessMovement()

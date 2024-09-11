@@ -38,4 +38,10 @@ public abstract class BaseState
     protected abstract void OnEnterState();
     protected abstract void OnUpdateState();
     protected abstract void OnExitState();
+
+    public abstract void OnTriggerEnter(Collider other);
+
+    public abstract void OnTriggerStay(Collider other);
+    public abstract void OnTriggerExit(Collider other);
+
 }

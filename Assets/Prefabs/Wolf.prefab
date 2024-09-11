@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4802747265802756086}
   m_Layer: 6
   m_Name: Wolf
-  m_TagString: Untagged
+  m_TagString: FleeTarget
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,7 +104,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 1.4
   m_BaseOffset: -0.175
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -161,8 +161,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentStamina: 0
   maxStamina: 10
-  rechargeRate: 1
-  depleteRate: 2
+  rechargeRate: 0.5
+  depleteRate: 3
 --- !u!1001 &2026397879578081160
 PrefabInstance:
   m_ObjectHideFlags: 0

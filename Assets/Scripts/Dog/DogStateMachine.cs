@@ -59,9 +59,9 @@ public class DogStateMachine : BaseStateMachine
             Debug.LogError("MovementComponent is not attached");
         }
 
-        DogMovementData dogMovementInfo = new(movementComponent.movementData, staminaComponent, waitTimeAtPath);
+        DogMovementData dogMovementData = new(movementComponent.movementData, staminaComponent, waitTimeAtPath);
 
-        IdleState = new(this, animator, dogMovementInfo);
-        PatrolState = new(this, animator, dogMovementInfo);
+        IdleState = new(this, animator, dogMovementData);
+        PatrolState = new(this, animator, dogMovementData);
     }
 }

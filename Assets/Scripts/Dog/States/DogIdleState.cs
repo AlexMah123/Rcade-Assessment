@@ -5,11 +5,10 @@ using UnityEngine;
 
 public class DogIdleState : BaseState
 {
-    [SerializeField] float waitTimeAtPath;
-
     //injected values
     private MovementData movementData;
     private StaminaComponent staminaComponent;
+    float waitTimeAtPath;
 
     public DogIdleState(BaseStateMachine stateMachine, Animator animator, DogMovementData dogMovementData)
         : base(stateMachine, animator)
@@ -24,7 +23,14 @@ public class DogIdleState : BaseState
         //set animation
         animator.SetInteger("State", 0);
 
+        // disable movement
+        movementData.agent.isStopped = true;
         stateMachine.StartCoroutine(WaitForPatrol());
+    }
+
+    protected override void OnUpdateState()
+    {
+
     }
 
     protected override void OnExitState()
@@ -34,14 +40,21 @@ public class DogIdleState : BaseState
             //stop recharging 
             staminaComponent.StopRechargeStamina();
         }
-
-        // allow movement
-        movementData.agent.isStopped = false;
     }
 
-    protected override void OnUpdateState()
+    public override void OnTriggerEnter(Collider other)
     {
-        
+
+    }
+
+    public override void OnTriggerStay(Collider other)
+    {
+
+    }
+
+    public override void OnTriggerExit(Collider other)
+    {
+
     }
 
     private IEnumerator WaitForPatrol()
