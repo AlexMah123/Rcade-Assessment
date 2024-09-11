@@ -16,6 +16,7 @@ public class DogPatrolState : BaseState
         : base(stateMachine, animator)
     {
         movementData = dogMovementData.movementData;
+        staminaComponent = dogMovementData.staminaComponent;
     }
 
     protected override void OnEnterState()
@@ -65,19 +66,44 @@ public class DogPatrolState : BaseState
 
     private void HandleMovement()
     {
+        HandleStaminaComponent();
+        UpdateRotation();
+    }
+
+    private void HandleStaminaComponent()
+    {
         //if stamina doesnt exist, use default speed
-        if (staminaComponent != null && staminaComponent.currentStamina > 0)
+        if (staminaComponent != null)
         {
-            movementData.agent.speed = movementData.sprintSpeed; // Assuming you have sprintSpeed in MovementData
+            //if not recharging and stamina isnt zero
+            if (staminaComponent.rechargeCoroutine == null && staminaComponent.currentStamina > 0)
+            {
+                staminaComponent.DecreaseEnergy(staminaComponent.depleteRate * Time.deltaTime);
+                movementData.agent.speed = movementData.sprintSpeed;
+
+                animator.SetInteger("State", 2);
+            }
+            else
+            {
+                movementData.agent.speed = movementData.moveSpeed;
+
+                animator.SetInteger("State", 1);
+            }
         }
         else
         {
+            //defaulted if no stamina component
             movementData.agent.speed = movementData.moveSpeed;
-        }
 
+            animator.SetInteger("State", 1);
+        }
+    }
+
+    private void UpdateRotation()
+    {
         if (movementData.agent.velocity != Vector3.zero)
         {
-            //targetRotation based on movement of agent
+            //targetRotation based on direction of movement of agent
             Quaternion targetRotation = Quaternion.LookRotation(movementData.agent.velocity.normalized);
 
             movementData.agent.transform.rotation = Quaternion.Slerp(
@@ -86,7 +112,5 @@ public class DogPatrolState : BaseState
                 Time.deltaTime * movementData.rotationSpeed
             );
         }
-
-        movementData.agent.speed = movementData.moveSpeed;
     }
 }
