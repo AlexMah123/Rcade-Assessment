@@ -49,14 +49,14 @@ public class NPCStateMachine : BaseStateMachine
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("FleeTarget"))
-        {
-            ChangeState(FleeState);
-        }
-
         if (currentState != null)
         {
             currentState.OnTriggerEnter(other);
+        }
+
+        if (other.gameObject.CompareTag("FleeTarget"))
+        {
+            ChangeState(FleeState);
         }
     }
 
@@ -70,14 +70,14 @@ public class NPCStateMachine : BaseStateMachine
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("FleeTarget"))
-        {
-            ChangeState(IdleState);
-        }
-
         if (currentState != null)
         {
             currentState.OnTriggerExit(other);
+        }
+
+        if (other.gameObject.CompareTag("FleeTarget"))
+        {
+            ChangeState(PatrolState);
         }
     }
 
