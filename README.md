@@ -4,7 +4,7 @@
 # Details of Project
 - Itch.io link: https://alexmah.itch.io/rcade-assessment (pass: RcadeStudio)
 - Create an NPC and 2 types of dogs.
-- look at [Go to Setup of Project section](#-Setup-of-Project)
+- look at [Go to Setup of Project section](##setup-of-project)
 
 ## NPC
 - patrols along waypoints 
