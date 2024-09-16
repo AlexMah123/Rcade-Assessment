@@ -4,10 +4,11 @@
 # Details of Project
 - Itch.io link: https://alexmah.itch.io/rcade-assessment (pass: RcadeStudio)
 - Create an NPC and 2 types of dogs.
+- look at [Go to Setup of Project section]
 
 ## NPC
 - patrols along waypoints 
-- flees when encountering a dog
+- flees when encountering a dog (after fleeing, the NPC will continue to patrol)
 
 ## Dog
 - patrols along waypoints 
