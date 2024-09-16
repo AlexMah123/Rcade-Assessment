@@ -11,7 +11,7 @@
 
 ## Dog
 - patrols along waypoints 
-- has stamina component
+- can have stamina component (sprints till it runs out of stamina, walks by default)
 
 ### Setup of Project
 ![Setup Project](https://github.com/user-attachments/assets/70e14ea9-df5e-4938-87f1-33071f7cf91a)
